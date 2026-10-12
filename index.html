@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Open Sea Battleship — play free with friends</title>
+    <meta
+      name="description"
+      content="Free online Battleship in the browser. Play with a friend on another phone or Wi‑Fi using a room code. No app install."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Open Sea Battleship" />
+    <meta
+      property="og:description"
+      content="Play Battleship with a friend in the browser, even on different Wi‑Fi."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top">
+        <h1>Battleship</h1>
+        <p id="status" class="status">Works across different Wi‑Fi. Share this page’s link and a room code.</p>
+      </header>
+
+      <section id="screen-home" class="screen">
+        <div class="card">
+          <p class="lead">
+            You and a friend can play from different houses or phones. Both open
+            <strong>the same web address</strong>, then one creates a room and the other joins.
+          </p>
+          <button id="btn-create" class="primary">Create room</button>
+          <div class="join-row">
+            <input id="join-code" maxlength="4" placeholder="CODE" autocomplete="off" />
+            <button id="btn-join">Join</button>
+          </div>
+          <p class="hint">
+            Different Wi‑Fi is fine. The other person needs this page’s URL (not a
+            <code>localhost</code> or file link) plus your 4-letter code.
+          </p>
+        </div>
+      </section>
+
+      <section id="screen-lobby" class="screen hidden">
+        <div class="card">
+          <p>Send your friend this page’s link and this code</p>
+          <div id="room-code" class="code">----</div>
+          <p class="hint">Waiting for them to join…</p>
+        </div>
+      </section>
+
+      <section id="screen-place" class="screen hidden">
+        <div class="place-tools">
+          <button id="btn-rotate">Rotate</button>
+          <button id="btn-random">Random fleet</button>
+          <button id="btn-ready" class="primary" disabled>Ready</button>
+        </div>
+        <div id="ship-list" class="ship-list"></div>
+        <div class="board-wrap">
+          <h2>Your waters</h2>
+          <div id="place-board" class="board"></div>
+        </div>
+      </section>
+
+      <section id="screen-battle" class="screen hidden">
+        <div class="battle">
+          <div class="board-wrap">
+            <h2>Enemy waters</h2>
+            <div id="enemy-board" class="board"></div>
+          </div>
+          <div class="board-wrap">
+            <h2>Your fleet</h2>
+            <div id="own-board" class="board"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-over" class="screen hidden">
+        <div class="card">
+          <h2 id="over-title">Game over</h2>
+          <p id="over-text"></p>
+          <button id="btn-home" class="primary">New game</button>
+        </div>
+      </section>
+    </div>
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
